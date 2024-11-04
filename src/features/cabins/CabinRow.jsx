@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React from "react";
 import formatCurrency from "../../utils/helpers";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCabin } from "../../services/apiCabins";
@@ -75,9 +74,12 @@ export default function CabinRow({ cabin }) {
       <div>Fits up tp {maxCapacity} guests </div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
-      <button onClick={() => mutate(cabinId)} disabled={isDeleting}>
-        Delete
-      </button>
+      <div>
+        {/* <button onClick={setShowForm(!showForm)}>Edit</button> */}
+        <button onClick={() => mutate(cabinId)} disabled={isDeleting}>
+          Delete
+        </button>
+      </div>
     </TableRow>
   );
 }

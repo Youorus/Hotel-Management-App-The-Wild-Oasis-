@@ -29,4 +29,13 @@ const formatCurrency = (value) =>
     value
   );
 
+export const cleanFileName = (name) => {
+  return name
+    .normalize("NFD") // Normalisation pour enlever les accents
+    .replace(/[\u0300-\u036f]/g, "") // Enlève les accents
+    .replace(/[^a-zA-Z0-9.-]/g, "-") // Remplace les caractères non alphanumériques par des tirets
+    .replace(/--+/g, "-") // Remplace les tirets multiples par un seul
+    .replace(/^-|-$/g, ""); // Enlève les tirets en début et fin
+};
+
 export default formatCurrency;
